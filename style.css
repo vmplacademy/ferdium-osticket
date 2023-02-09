@@ -1,0 +1,11 @@
+#container {
+    width: 80%;
+}
+
+table.list {
+    width: 100%;
+}
+
+form > p {
+    text-align: left !important;
+}

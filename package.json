@@ -1,0 +1,14 @@
+{
+  "id": "osticket",
+  "name": "osTicket",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "Ferdium recipe for OsTicket",
+  "author": "Marcin Tula <marcin.tula@vm.pl>",
+  "repository": "github.com/vmplacademy/ferdium-osticket",
+  "main": "index.js",
+  "config": {
+    "hasCustomUrl": true,
+    "hasTeamId": false
+  }
+}
