@@ -47,6 +47,10 @@ module.exports = (Ferdium, settings) => {
         );
   };
 
+  const notify = (message) => {
+    new Notification(settings.recipe.name, {body: message});
+  };
+
   let globalTickets = getTickets();
   let resetGlobalTickets = false;
 
@@ -71,11 +75,6 @@ module.exports = (Ferdium, settings) => {
     if (JSON.stringify(globalTickets) !== JSON.stringify(currentTickets)) {
       const globalTicketIds = globalTickets
           .map(st => st.id);
-      const newIds = currentTickets
-          .map(t => t.id)
-          .filter(id => !globalTicketIds
-              .includes(id)
-          );
 
       const newTickets = currentTickets
           .filter(t => !globalTicketIds
@@ -85,6 +84,8 @@ module.exports = (Ferdium, settings) => {
       if (newTickets.length) {
         // There are new tickets
         changesCount += newTickets.length;
+
+        notify(`New tickets: ${newTickets.length}`);
 
         newTickets.forEach(t => changeTicketColor(t, '#66FF99'));
       }
@@ -103,6 +104,8 @@ module.exports = (Ferdium, settings) => {
         newConversationTickets.forEach(t => changeTicketColor(t, '#8BCBE0'))
 
         changesCount += newConversationTickets.length;
+
+        notify(`Tickets with new conversations: ${newConversationTickets.length}`);
       }
     }
 
