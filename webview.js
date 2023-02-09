@@ -48,7 +48,9 @@ module.exports = (Ferdium, settings) => {
   };
 
   const notify = (message) => {
-    new Notification(settings.recipe.name, {body: message});
+    new Notification(settings.recipe.name, {
+      body: message,
+    });
   };
 
   let globalTickets = getTickets();
@@ -100,12 +102,11 @@ module.exports = (Ferdium, settings) => {
 
       if (newConversationTickets.length) {
         // There are tickets with new conversations
-
-        newConversationTickets.forEach(t => changeTicketColor(t, '#8BCBE0'))
-
         changesCount += newConversationTickets.length;
 
         notify(`Tickets with new conversations: ${newConversationTickets.length}`);
+
+        newConversationTickets.forEach(t => changeTicketColor(t, '#8BCBE0'))
       }
     }
 
